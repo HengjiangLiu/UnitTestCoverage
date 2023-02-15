@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ScaleToFitTrayMapper.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scale-to-fit-tray-widget</a> &gt; <a href="index.source.html" class="el_package">com.hotstar.widgets.scale_to_fit_tray_widget.scaletofittray</a> &gt; <span class="el_source">ScaleToFitTrayMapper.kt</span></div><h1>ScaleToFitTrayMapper.kt</h1><pre class="source lang-java linenums">package com.hotstar.widgets.scale_to_fit_tray_widget.scaletofittray
+
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import com.hotstar.bff.models.widget.BffRectangleStudioWidget
+import com.hotstar.bff.models.widget.BffScaleToFitTrayItemWidget
+import com.hotstar.bff.models.widget.BffSquareStudioWidget
+import com.hotstar.widgets.scale_to_fit_tray_widget.widgetitems.StudioTileUi
+
+@Composable
+fun ScaleToFitTrayMapper(
+<span class="nc bnc" id="L12" title="All 2 branches missed.">    modifier: Modifier = Modifier,</span>
+    widgetItem: BffScaleToFitTrayItemWidget
+<span class="nc bnc" id="L14" title="All 18 branches missed.">) {</span>
+<span class="nc" id="L15">    when (widgetItem) {</span>
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        is BffSquareStudioWidget -&gt; {</span>
+<span class="nc" id="L17">            StudioTileUi(</span>
+<span class="nc" id="L18">                imageData = widgetItem.image,</span>
+<span class="nc" id="L19">                action = widgetItem.action,</span>
+<span class="nc" id="L20">                widgetCommons = widgetItem.widgetCommons,</span>
+<span class="nc" id="L21">                modifier = modifier,</span>
+<span class="nc" id="L22">                widgetItem = widgetItem</span>
+            )
+        }
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        is BffRectangleStudioWidget -&gt; {</span>
+<span class="nc" id="L26">            StudioTileUi(</span>
+<span class="nc" id="L27">                imageData = widgetItem.image,</span>
+<span class="nc" id="L28">                action = widgetItem.action,</span>
+<span class="nc" id="L29">                widgetCommons = widgetItem.widgetCommons,</span>
+<span class="nc" id="L30">                modifier = modifier,</span>
+<span class="nc" id="L31">                widgetItem = widgetItem</span>
+            )
+        }
+<span class="nc bnc" id="L34" title="All 2 branches missed.">    }</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">}</span>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

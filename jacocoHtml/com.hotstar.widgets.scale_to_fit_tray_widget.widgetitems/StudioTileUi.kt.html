@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StudioTileUi.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scale-to-fit-tray-widget</a> &gt; <a href="index.source.html" class="el_package">com.hotstar.widgets.scale_to_fit_tray_widget.widgetitems</a> &gt; <span class="el_source">StudioTileUi.kt</span></div><h1>StudioTileUi.kt</h1><pre class="source lang-java linenums">package com.hotstar.widgets.scale_to_fit_tray_widget.widgetitems
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.width
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.hotstar.bff.models.common.BffActions
+import com.hotstar.bff.models.common.BffImageWithRatio
+import com.hotstar.bff.models.widget.BffScaleToFitTrayItemWidget
+import com.hotstar.bff.models.widget.BffSquareStudioWidget
+import com.hotstar.bff.models.widget.BffWidgetCommons
+import com.hotstar.themes.theme.HotstarTheme
+import com.hotstar.ui.Tags
+import com.hotstar.ui.action.rememberBffActionHandler
+import com.hotstar.ui.animations.gesturedClickable
+import com.hotstar.ui.atoms.image.HSImage
+import com.hotstar.ui.atoms.text.HSText
+import com.hotstar.ui.util.getCloudinaryImagePathWithTransformation
+import com.hotstar.ui.util.getCloudinaryTransformation
+
+@Composable
+fun StudioTileUi(
+    imageData: BffImageWithRatio,
+<span class="nc bnc" id="L31" title="All 2 branches missed.">    modifier: Modifier = Modifier,</span>
+    action: BffActions,
+    widgetCommons: BffWidgetCommons,
+    widgetItem: BffScaleToFitTrayItemWidget,
+<span class="nc bnc" id="L35" title="All 36 branches missed.">) {</span>
+<span class="nc" id="L36">    val bffActionHandler = rememberBffActionHandler(widgetCommons)</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">    StudioPoster(</span>
+<span class="nc" id="L38">        modifier = modifier</span>
+<span class="nc" id="L39">            .gesturedClickable(</span>
+                onClick = {
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                    for (bffClickAction in action.clickAction) {</span>
+<span class="nc" id="L42">                        bffActionHandler.handleBffAction(bffAction = bffClickAction)</span>
+                    }
+<span class="nc" id="L44">                }</span>
+            ),
+<span class="nc" id="L46">        imageData = imageData,</span>
+<span class="nc" id="L47">        widgetItem = widgetItem</span>
+    )
+<span class="nc bnc" id="L49" title="All 2 branches missed.">}</span>
+
+@Composable
+private fun StudioPoster(
+    modifier: Modifier,
+    imageData: BffImageWithRatio,
+    widgetItem: BffScaleToFitTrayItemWidget,
+<span class="nc bnc" id="L56" title="All 18 branches missed.">) {</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">    if (imageData.url.isBlank()) {</span>
+<span class="nc" id="L58">        Placeholder(modifier, imageData)</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">    } else {</span>
+<span class="nc" id="L60">        HSImage(</span>
+<span class="nc" id="L61">            data = getCloudinaryImagePathWithTransformation(</span>
+<span class="nc" id="L62">                imageData.url,</span>
+<span class="nc" id="L63">                getStudioTileTransformation(widgetItem)</span>
+            ),
+<span class="nc" id="L65">            modifier = modifier</span>
+<span class="nc" id="L66">                .aspectRatio(1f/imageData.ratio.toFloat())</span>
+<span class="nc" id="L67">                .testTag(Tags.TAG_STUDIO_TILE_NAME)</span>
+<span class="nc" id="L68">                .clip(shape = HotstarTheme.shapes.radius02),</span>
+<span class="nc" id="L69">            contentDescription = &quot;studio&quot;</span>
+        )
+    }
+<span class="nc bnc" id="L72" title="All 2 branches missed.">}</span>
+
+@Composable
+private fun Placeholder(
+    modifier: Modifier,
+    imageData: BffImageWithRatio,
+<span class="nc bnc" id="L78" title="All 14 branches missed.">) {</span>
+<span class="nc" id="L79">    Box(</span>
+<span class="nc" id="L80">        modifier = modifier</span>
+<span class="nc" id="L81">            .testTag(Tags.TAG_STUDIO_TILE)</span>
+<span class="nc" id="L82">            .aspectRatio(1f/imageData.ratio.toFloat())</span>
+<span class="nc" id="L83">            .background(</span>
+<span class="nc" id="L84">                HotstarTheme.colors.backgroundSurface,</span>
+<span class="nc" id="L85">                HotstarTheme.shapes.radius02</span>
+            ),
+    ) {
+<span class="nc bnc" id="L88" title="All 4 branches missed.">        HSText(</span>
+<span class="nc" id="L89">            text = imageData.title,</span>
+<span class="nc" id="L90">            modifier = Modifier</span>
+<span class="nc" id="L91">                .align(Alignment.Center)</span>
+<span class="nc" id="L92">                .width(100.dp),</span>
+<span class="nc" id="L93">            color = HotstarTheme.colors.onSurfaceAlt,</span>
+<span class="nc" id="L94">            style = HotstarTheme.typography.captionSemiBold1,</span>
+<span class="nc" id="L95">            textAlign = TextAlign.Center</span>
+<span class="nc" id="L96">        )</span>
+<span class="nc" id="L97">    }</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">}</span>
+
+@Composable
+<span class="nc" id="L101">fun getStudioTileTransformation(widgetItem: BffScaleToFitTrayItemWidget): String {</span>
+<span class="nc bnc" id="L102" title="All 4 branches missed.">    return if (widgetItem is BffSquareStudioWidget) {</span>
+<span class="nc" id="L103">        getCloudinaryTransformation(width = 64, height = 64)</span>
+<span class="nc" id="L104">    } else {</span>
+<span class="nc" id="L105">        getCloudinaryTransformation(width = 109, height = 62)</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
